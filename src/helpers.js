@@ -1,14 +1,13 @@
 // With shallow copy of products object, remove product from cart
 
-function removeFromCart(products, id) {
-  for (let key in products) {
-    if (id === key) {
-      // console.log(key);
-      delete products[key];
-    }
-  }
-  return products;
-}
+// function removeFromCart(products, id) {
+//   for (let key in products) {
+//     if (id === key) {
+//       delete products[key];
+//       return products;
+//     }
+//   }
+// }
 
 function formatName(name) {
   let words = name.split(" ");
@@ -19,9 +18,5 @@ function formatName(name) {
   }
   return newName.join(" ");
 }
-// const formatName = (name) => {
-// }
 
-
-
-export { removeFromCart, formatName };
+export { formatName };

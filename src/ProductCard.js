@@ -4,16 +4,16 @@ import { formatName } from './helpers';
 import { addToCart, deleteFromCart } from './actions';
 
 
-function Product({ id }) {
-  const { products } = useSelector(s => ({ products: s.products }), shallowEqual);
+function ProductCard({ id }) {
+  const { products, cart } = useSelector(s => ({ products: s.products, cart: s.cart }), shallowEqual);
   const dispatch = useDispatch();
 
   const add = () => {
-    dispatch(addToCart({ id: products[id] }));
+    dispatch(addToCart(id));
   }
-  const remove = () => {
-    dispatch(deleteFromCart(id));
-  }
+  // const remove = () => {
+  //   dispatch(deleteFromCart(id));
+  // }
 
   let formattedName = formatName(products[id].name);
 
@@ -24,9 +24,9 @@ function Product({ id }) {
       <p className='description'>{products[id].description}</p>
       <img className='image' src={products[id].image_url} alt={products[id].name} />
       <button onClick={add}>Add Product</button>
-      <button onClick={remove}>Remove Product</button>
+      {/* <button onClick={remove}>Remove Product</button> */}
     </div>
   );
 }
 
-export default Product;
+export default ProductCard;

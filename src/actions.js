@@ -6,6 +6,7 @@ export function addToCart(data) {
     payload: data
   }
 }
+
 export function deleteFromCart(data) {
   return {
     type: DELETE_FROM_CART,

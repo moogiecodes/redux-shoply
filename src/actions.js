@@ -1,15 +1,15 @@
 import { ADD_TO_CART, DELETE_FROM_CART } from './actionTypes';
 
-export function addToCart(data) {
+export function addToCart(id) {
   return {
     type: ADD_TO_CART,
-    payload: data
+    payload: id
   }
 }
 
-export function deleteFromCart(data) {
+export function deleteFromCart(id) {
   return {
     type: DELETE_FROM_CART,
-    payload: data
+    payload: id
   }
 }

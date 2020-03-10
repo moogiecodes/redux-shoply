@@ -1,13 +1,10 @@
 import data from './data.json';
 import { ADD_TO_CART, DELETE_FROM_CART } from './actionTypes';
-import { removeFromCart } from './helpers';
-// console.log(data);
 
 const INITIAL_STATE = {
   products: { ...data.products },
   cart: []
 }
-
 
 function rootReducer(state = INITIAL_STATE, action) {
   const id = action.payload;

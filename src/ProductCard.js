@@ -11,9 +11,12 @@ function ProductCard({ id }) {
   const add = () => {
     dispatch(addToCart(id));
   }
-  // const remove = () => {
-  //   dispatch(deleteFromCart(id));
-  // }
+
+  const remove = () => {
+    dispatch(deleteFromCart(id));
+  }
+
+  console.log(cart);
 
   let formattedName = formatName(products[id].name);
 
@@ -24,7 +27,7 @@ function ProductCard({ id }) {
       <p className='description'>{products[id].description}</p>
       <img className='image' src={products[id].image_url} alt={products[id].name} />
       <button onClick={add}>Add Product</button>
-      {/* <button onClick={remove}>Remove Product</button> */}
+      <button onClick={remove}>Remove Product</button>
     </div>
   );
 }

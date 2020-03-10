@@ -8,18 +8,19 @@ const INITIAL_STATE = {
   cart: []
 }
 
+
 function rootReducer(state = INITIAL_STATE, action) {
+  const id = action.payload;
+  const cartCopy = [...state.cart];
+
   switch (action.type) {
     case ADD_TO_CART:
-      let id = action.payload;
-      
-      // if item already in cart => find and increase quantity
-      let cartCopy = [...state.cart];
 
-      for(let obj of cartCopy) {
-        if(obj.id === id) {
+      // if item already in cart => find and increase quantity
+      for (let obj of cartCopy) {
+        if (obj.id === id) {
           obj.quantity++;
-          return {...state, cart: cartCopy}
+          return { ...state, cart: cartCopy }
         }
       }
 
@@ -29,16 +30,25 @@ function rootReducer(state = INITIAL_STATE, action) {
         quantity: 1
       };
 
-      return {...state, cart: [...state.cart, addedItem]}
+      return { ...state, cart: [...state.cart, addedItem] }
 
-  //   case DELETE_FROM_CART:
-  // let id = action.payload;
-  // let updatedCart = removeFromCart(...state.cart);
-  // return { ...state, cart: updatedCart };
+    case DELETE_FROM_CART:
+
+      // if item quantity > 1 => decrement quantity by 1
+      for (let obj of cartCopy) {
+        if (obj.id === id && obj.quantity > 1) {
+          obj.quantity--;
+          return { ...state, cart: cartCopy }
+        }
+      }
+
+      // if item quantity === 1 => delete item object
+      let updatedCart = state.cart.filter(obj => obj.id !== id);
+      return { ...state, cart: updatedCart }
 
     default:
-  return state;
-}
+      return state;
+  }
 }
 
 export default rootReducer;

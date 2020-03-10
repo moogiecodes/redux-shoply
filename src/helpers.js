@@ -10,5 +10,18 @@ function removeFromCart(products, id) {
   return products;
 }
 
+function formatName(name) {
+  let words = name.split(" ");
+  let newName = [];
+  for (let word of words) {
+    word = word.charAt(0).toUpperCase() + word.slice(1)
+    newName.push(word);
+  }
+  return newName.join(" ");
+}
+// const formatName = (name) => {
+// }
 
-export default removeFromCart;
+
+
+export { removeFromCart, formatName };

@@ -1,7 +1,6 @@
 import React from 'react';
 import Product from './Product';
 import { useSelector, shallowEqual } from 'react-redux'
-//map over products
 
 function ProductsList() {
   const { products } = useSelector(s => ({ products: s.products }), shallowEqual);
@@ -10,7 +9,7 @@ function ProductsList() {
 
   const productCards = []
   for (let id in products) {
-    productCards.push(<Product id={id} />);
+    productCards.push(<Product key={id} id={id} />);
   }
 
   return (

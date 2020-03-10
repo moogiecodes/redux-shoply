@@ -3,7 +3,7 @@ import { ADD_TO_CART, DELETE_FROM_CART } from './actionTypes';
 
 const INITIAL_STATE = {
   products: { ...data.products },
-  cart: []
+  cart: [] // array of objects => {id: #, quantity: #}
 }
 
 function rootReducer(state = INITIAL_STATE, action) {

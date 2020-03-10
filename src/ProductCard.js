@@ -17,8 +17,6 @@ function ProductCard({ id }) {
     dispatch(deleteFromCart(id));
   }
 
-  console.log(cart);
-
   let formattedName = formatName(products[id].name);
 
   return (
@@ -28,7 +26,7 @@ function ProductCard({ id }) {
         <CardBody>
           <CardTitle>{formattedName}</CardTitle>
           <CardText>{products[id].description}</CardText>
-          <CardText>{products[id].price}</CardText>
+          <CardText>${products[id].price}</CardText>
           <Button onClick={add}>Add to cart</Button>
           <Button color="danger" onClick={remove}>Remove from cart</Button>
         </CardBody>
